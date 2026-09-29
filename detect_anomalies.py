@@ -45,3 +45,8 @@ def find_market_anomalies(ticker="AAPL", z_threshold=2.0):
         z = row['Z_Score']
         # here we just saving Z_score which is inside of row value into Z
         direction = "🟢 SURGE" if pct > 0 else "🔴 DROP"
+        print(f"[{date_str}] {direction}: {pct:+.2f}% (Z-Score: {z:+.2f}) | Close: ${row['Close']:.2f}")
+        return anomalies
+
+        if __name__ == "__main__":
+            find_market_anomalies()
