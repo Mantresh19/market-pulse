@@ -34,5 +34,14 @@ def find_market_anomalies(ticker="AAPL", z_threshold=2.0):
     summary = anomalies[['Close', 'Daily_Return', 'Z_Score']]
     # Here I put 2[[]], It just tells the computer to remove all the clutter and only show this special values eg. close,daily_return etc
     for date, row in summary.iterrows():
+    # iterrows() is a pandas method which helps to loop through the data frame
+    # date: the index for that specific day
+    # row: a package containing that days data eg, close, daily_return, z-score
         date_str = str(date)[:10]
-        pct = row
+        # str(date): there is so much mess in pandas data like 2024.03.12 00.00.00... it just turns into pure text
+        # [:10] grabs only first 10 characters eg. 2026.03.28 and ignore 00.00.00...
+        pct = row['Daily_Return'] * 100
+        # Converts that raw decimal back to human percentage
+        z = row['Z_Score']
+        # here we just saving Z_score which is inside of row value into Z
+        direction = "🟢 SURGE" if pct > 0 else "🔴 DROP"
