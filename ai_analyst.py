@@ -4,7 +4,7 @@ from detect_anomalies import find_market_anomalies
 from fetch_news import get_stock_news
 
 # It's like keywords matching algorithm like you made your uni project using this algo
-BULLISH_WORDS = ["rises", "record", "high", "buy", "favourite", "surge", "beat", "growth", "strong"]
+BULLISH_WORDS = ["rises", "record", "high", "buy", "favourite", "surge", "beat", "growth", "strong", "jumps", "booms"]
 BEARISH_WORDS = ["threaten", "softer", "drop", "fall", "miss", "risk", "lawsuit", "weak", "done"]
 
 def score_headline_sentiment(headline):
@@ -42,7 +42,7 @@ def generate_intelligence_report(ticker="AAPL"):
         s_score = score_headline_sentiment(title)
         total_score += s_score
 
-        if total_score > 0:
+        if s_score > 0:
             tag = "🟢 BULLISH"
         elif s_score < 0:
             tag = "🔴 BEARISH"
