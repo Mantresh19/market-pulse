@@ -63,5 +63,5 @@ def create_anomaly_chart(ticker="AAPL", z_threshold = 2.0):
     print(f"\n📈 Chart saved successfully to: {chart_path}")
     return chart_path
 
-if __name__ == __main__:
+if __name__ == "__main__":
     create_anomaly_chart()
