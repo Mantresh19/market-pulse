@@ -58,3 +58,10 @@ def create_anomaly_chart(ticker="AAPL", z_threshold = 2.0):
     #What does it do? => Saves the chart as a PNG image file instead of only displaying it `chart_path`: Specifies where and under what name the file is saved, e.g. `"charts/AAPL_anomalies.png"`.
     # `dpi=150`:Controls image quality. 150 DPI makes the image sharper and clearer without making the file unnecessarily large.
     plt.close()
+    # Why is it important? => Matplotlib keeps charts in RAM (memory) while the program is running.
+    # If you create many charts without `plt.close()`: Memory usage keeps increasing. Charts may overlap or contain old data. The program can become slow or crash. `plt.close()` means:  “The chart is saved, so remove it from memory and start with a clean canvas.”*
+    print(f"\n📈 Chart saved successfully to: {chart_path}")
+    return chart_path
+
+if __name__ == __main__:
+    create_anomaly_chart()
