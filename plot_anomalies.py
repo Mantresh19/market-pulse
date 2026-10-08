@@ -39,3 +39,22 @@ def create_anomaly_chart(ticker="AAPL", z_threshold = 2.0):
     # Draw Red Dots on Drop Anomalies
     plt.scatter(drops.index, drops["Close"], color="#ef4444", label="Drop Anomaly (Z < -2)", s=80, zorder=5)
 
+    # Add chart title, axis, labels & grid
+    plt.title(f"{ticker} - 1-Year Price & Statistical Volatility Anomalies", fontsize=14, fontweight="bold")
+    # plt.title is used to print date right in the top center of the graph
+    plt.xlabel("Date")
+    # this line is used to print date right in the center of the x axis
+    plt.ylabel("Stock Price ($ USD)")
+    # Same as x axis but this is y
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+
+    # Save the high resolution image into the data folder
+    chart_path = f"data/{ticker}_chart.png"
+    plt.tight_layout()
+    # 1. What problem does it solve? => Large titles and axis labels can sometimes get cut off or touch the edges of the chart.
+    # 2. What does this line do? => It automatically adjusts the chart spacing so that the title, labels, and numbers fit neatly inside without being cropped.
+    plt.savefig(chart_path, dpi=150)
+    #What does it do? => Saves the chart as a PNG image file instead of only displaying it `chart_path`: Specifies where and under what name the file is saved, e.g. `"charts/AAPL_anomalies.png"`.
+    # `dpi=150`:Controls image quality. 150 DPI makes the image sharper and clearer without making the file unnecessarily large.
+    plt.close()
