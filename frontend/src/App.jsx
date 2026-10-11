@@ -14,6 +14,26 @@ function App() {
       const response = await fetch(url);
       const result = await response.json();
       setData(result);
+    } catch (error) {
+      console.error("Failed to connect to Python API:", error);
     }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchMarketData();
+  }, []);
+
+  return {
+    <div className="dashboard">
+      {}
+      <header className = "header">
+      <h1>📊 MarketPulse AI</h1>
+      <div className="controls">
+      <input type="text"
+      value={ticker}
+      onChange={(e)} />
+      </div>
+    </div>
   }
 }
